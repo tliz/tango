@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load rango_template_tags %}
+{% load staticfiles %}
+<script src="{% static "js/jquery.js" %}"></script>
+<script src="{% static "js/rango-jquery.js" %}"></script>
+
+<html> 
+<head>
+	<title> 
+		Rango -
+	    {% block title_block %}
+	        How to Tango with Django!
+		{% endblock %} 
+	</title>
+</head> 
+<body>
+	<div>
+		<h3>Categories</h3>
+		{% block sidebar_block %}
+		    {% get_category_list category %}
+		{% endblock %}
+	</div>
+	<div>
+		{% block body_block %} 
+		{% endblock %}
+	</div> 
+	<hr />
+	<div> 
+		<ul>
+			<li><a href="{% url 'add_category' %}">Add New Category</a></li> 
+			<li><a href="{% url 'about' %}">About</a></li>
+			<li><a href="{% url 'index' %}">Index</a></li>
+			<hr>
+			<li><a href="{% url 'registration_register' %}">Register</a></li>
+			<li><a href="{% url 'auth_login' %}">Login</a></li>
+			<li><a href="{% url 'auth_logout' %}?next=/rango/">Logout</a></li>
+		</ul> 
+	</div>
+</body>
+</html>
+
